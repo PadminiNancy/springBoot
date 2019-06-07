@@ -30,5 +30,49 @@ public class BookDao {
 	    return books;
 		
 	}
+	
+	public BookInfo addBook(BookInfo book)
+	{
+		
+		EntityManager em = JPAUtility.getEntityManager(PERSISTENCE_UNIT_NAME);
+		em.getTransaction().begin();
+		em.persist(book);
+		em.getTransaction().commit();
+		em.close();JPAUtility.close();
+		
+		return book;
+		
+	}
+	
+	public BookInfo updateBook(BookInfo book)
+	{
+		
+		EntityManager em = JPAUtility.getEntityManager(PERSISTENCE_UNIT_NAME);
+		em.getTransaction().begin();
+		
+		em.getTransaction().commit();
+		em.close();JPAUtility.close();		
+		return book;
+		
+	}
+	
+	public Boolean deleteBook(int book_id)
+	{
+		EntityManager em = JPAUtility.getEntityManager(PERSISTENCE_UNIT_NAME);
+		em.getTransaction().begin();
+		try {
+		    BookInfo book = em.find(BookInfo.class, book_id);
+		    em.remove(book);
+		    em.getTransaction().commit();
+		    em.close();JPAUtility.close();		
+		return true;
+		}
+		catch (Exception e) {
+			
+			e.printStackTrace();
+			//System.out.println("Book Info doesn't exists .");
+			return false;
+		}
+	}
 
 }

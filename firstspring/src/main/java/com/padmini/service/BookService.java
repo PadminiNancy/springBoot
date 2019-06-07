@@ -18,10 +18,25 @@ public class BookService {
 	public List allBooks(String name)
 	{
 		System.out.println("In Service ");
-		return bookDao.getAllBooks(name);
-		
+		return bookDao.getAllBooks(name);		
 	}
 	
+	public BookInfo addBook(BookInfo book) 
+	{
+		System.out.println("In Service ");
+		return bookDao.addBook(book);		
+	}
 	
-
+	public BookInfo updateBook(BookInfo book) 
+	{
+		System.out.println("In Service ");
+		return bookDao.updateBook(book);		
+	}
+	
+	public Boolean deleteBook(int book_id) 
+	{
+		System.out.println("In Service ");
+		return bookDao.deleteBook(book_id);		
+	}
+	
 }

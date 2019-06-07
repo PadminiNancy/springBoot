@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.padmini.model.UserInfo;
 import com.padmini.service.BookService;
 import com.padmini.service.LoginService;
+import com.padmini.model.BookInfo;
 
 @RestController
 public class DemoController {
@@ -63,7 +64,22 @@ public class DemoController {
 		
 	}
 	
+	@RequestMapping(method=RequestMethod.POST,value="mybrary/{userId}/add")
+	public BookInfo addBook(@RequestBody BookInfo book, @PathVariable String userId) {		
+		book.setUsername(userId);		
+		return bookService.addBook(book);
+	}
 	
+	@RequestMapping(method=RequestMethod.PUT,value="mybrary/{userId}/update")
+	public BookInfo updateBook(@RequestBody BookInfo book, @PathVariable String userId) {		
+		book.setUsername(userId);		
+		return bookService.updateBook(book);
+	}
+	
+	@RequestMapping(method=RequestMethod.POST,value="mybrary/{userId}/delete/{bookId}")
+	public Boolean deleteBook(@PathVariable String userId, @PathVariable int bookId) {				
+		return bookService.deleteBook(bookId);
+	}
 	
 	
 }

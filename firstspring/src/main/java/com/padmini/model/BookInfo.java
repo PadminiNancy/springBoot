@@ -45,12 +45,13 @@ public class BookInfo {
 		super();
 	}
 
-	public BookInfo(String book_name, String author, int price, String status) {
+	public BookInfo(String username, String book_name, String author, int price, String status) {
 		super();
 		this.book_name = book_name;
 		this.author = author;
 		this.price = price;
 		this.status = status;
+		this.username= username;
 	}
 
 	
